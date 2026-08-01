@@ -1,0 +1,129 @@
+openapi: 3.1.0
+x-provenance:
+  generated: '2026-07-21'
+  method: generated
+  source: https://docs.seismic.systems/getting-started/src20-factory/api.md
+  note: >-
+    Faithfully generated from Seismic's published SRC20 Factory REST API
+    reference. Request/response shapes, the error envelope, and the documented
+    base URL (a local factory service on localhost:3001) are transcribed verbatim
+    from the docs; nothing was invented. This read-only REST surface queries
+    SRC20 tokens deployed through the factory; it cannot read shielded state.
+info:
+  title: Seismic SRC20 Factory REST API
+  version: '1.0'
+  description: >-
+    A read-only REST API that queries public metadata for SRC20 tokens deployed
+    through the Seismic SRC20 Factory. It uses a standard public provider and
+    holds no private key, so it can only read public on-chain state (name,
+    symbol, decimals, owner, total supply) — never shielded balances or
+    allowances. Addresses are returned as lowercase hex (not EIP-55 checksummed).
+  contact:
+    name: Seismic Systems
+    email: dev@seismic.systems
+    url: https://docs.seismic.systems/getting-started/src20-factory/api.md
+  license:
+    name: See Seismic Terms of Service
+    url: https://docs.seismic.systems/reference/terms-of-service.md
+servers:
+  - url: http://localhost:3001
+    description: Local SRC20 Factory service (as documented in the quickstart)
+paths:
+  /api/tokens:
+    get:
+      operationId: listTokens
+      summary: List deployed SRC20 tokens
+      description: Returns all tokens deployed through the SRC20 Factory with their public metadata.
+      tags: [tokens]
+      responses:
+        '200':
+          description: A list of deployed tokens.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    description: Number of tokens returned.
+                  tokens:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Token'
+              example:
+                count: 2
+                tokens:
+                  - address: '0xabc123...'
+                    name: My Private Token
+                    symbol: MPT
+                    decimals: 18
+                    owner: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
+                    total_supply: '1000000000000000000000000'
+  /api/token/{address}:
+    get:
+      operationId: getToken
+      summary: Get a single token by address
+      description: Retrieves public metadata for a single SRC20 token by its contract address.
+      tags: [tokens]
+      parameters:
+        - name: address
+          in: path
+          required: true
+          description: The SRC20 token contract address (hex).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Public metadata for the token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+              example:
+                name: My Private Token
+                symbol: MPT
+                decimals: 18
+                owner: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
+                total_supply: '1000000000000000000000000'
+        '400':
+          description: The supplied address is invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: 'Invalid address: ...'
+        '404':
+          description: No token found at the supplied address.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Token:
+      type: object
+      description: Public metadata for an SRC20 token.
+      properties:
+        address:
+          type: string
+          description: The token contract address (lowercase hex, not EIP-55 checksummed).
+        name:
+          type: string
+        symbol:
+          type: string
+        decimals:
+          type: integer
+        owner:
+          type: string
+          description: The token owner's address (lowercase hex).
+        total_supply:
+          type: string
+          description: Total supply as a decimal string of base units.
+    Error:
+      type: object
+      description: Error envelope returned by the factory API.
+      properties:
+        error:
+          type: string
+          description: Human-readable error message.

@@ -1,0 +1,14 @@
+{
+  "provider": "seismic-systems",
+  "sources": [
+    "seismic-systems-tokens-api-openapi.yml"
+  ],
+  "outputs": [
+    "seismic-systems-tokens-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

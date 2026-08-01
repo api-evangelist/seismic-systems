@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/seismic-systems-src20-factory-openapi.yml
+docs: https://docs.seismic.systems/getting-started/src20-factory/api.md
+format: custom
+error_envelope:
+  field: error
+  media_type: application/json
+  shape: '{ "error": "<human-readable message>" }'
+  note: >-
+    The SRC20 Factory REST API returns a simple JSON envelope with a single `error`
+    string. It does not use RFC 9457 problem+json. Derived from the OpenAPI 4xx
+    responses and the published error example.
+problems:
+  - status: 400
+    title: Invalid address
+    detail: The supplied token address is malformed.
+    example: '{ "error": "Invalid address: ..." }'
+    source_operation: openapi/seismic-systems-src20-factory-openapi.yml#getToken
+  - status: 404
+    title: Token not found
+    detail: No token exists at the supplied address.
+    source_operation: openapi/seismic-systems-src20-factory-openapi.yml#getToken

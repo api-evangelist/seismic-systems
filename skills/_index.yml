@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.seismic.systems/claude-code/workflow-skills.md
+description: >-
+  Agent Skills for building on Seismic. Seismic PUBLISHES three Claude Code
+  workflow skills (captured below as searched from its docs) plus ready-to-use
+  CLAUDE.md templates per SDK. One additional skill is GENERATED here, grounded
+  in verified operationIds of the SRC20 Factory REST API.
+published_skills:
+  # Provider-published Claude Code workflow skills (docs.seismic.systems/claude-code/workflow-skills.md)
+  - name: Deploy Shielded Contract
+    install_path: .claude/skills/deploy-shielded-contract/SKILL.md
+    description: Step-by-step workflow for deploying a Seismic smart contract with sforge.
+    source: https://docs.seismic.systems/claude-code/workflow-skills.md
+  - name: Debug Shielded Transaction
+    install_path: .claude/skills/debug-shielded-tx/SKILL.md
+    description: Diagnostic checklist for when a shielded transaction fails or behaves unexpectedly.
+    source: https://docs.seismic.systems/claude-code/workflow-skills.md
+  - name: Migrate ERC20 to SRC20
+    install_path: .claude/skills/migrate-erc20-src20/SKILL.md
+    description: Convert a standard ERC20 token contract to a shielded SRC20 token on Seismic.
+    source: https://docs.seismic.systems/claude-code/workflow-skills.md
+claude_md_templates:
+  source: https://docs.seismic.systems/claude-code/templates.md
+  templates: [seismic-solidity, seismic-viem, seismic-react, seismic-alloy, seismic-python]
+skills:
+  - file: seismic-systems-query-src20-tokens.md
+    name: Query SRC20 tokens via the Factory REST API
+    api: openapi/seismic-systems-src20-factory-openapi.yml
+    operations: [listTokens, getToken]
+    method: generated

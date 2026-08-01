@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.seismic.systems/getting-started/installation.md
+description: >-
+  Seismic ships a fork of Foundry ("sfoundry") as its primary developer CLI
+  toolchain for writing, testing, and deploying shielded smart contracts. The
+  binaries are installed via the sfoundryup installer. Captured verbatim from
+  the Seismic installation and development-toolkit docs.
+docs:
+  - https://docs.seismic.systems/getting-started/installation.md
+  - https://docs.seismic.systems/getting-started/development-toolkit.md
+repo: https://github.com/SeismicSystems/seismic-foundry
+prerequisites:
+  - name: Rust / Cargo
+    install: curl https://sh.rustup.rs -sSf | sh
+install:
+  installer: sfoundryup
+  bootstrap: >-
+    curl -L -H "Accept: application/vnd.github.v3.raw"
+    "https://api.github.com/repos/SeismicSystems/seismic-foundry/contents/sfoundryup/install?ref=seismic" | bash
+  finalize: sfoundryup   # builds the toolchain (5-20 minutes)
+binaries:
+  - name: sforge
+    description: Seismic fork of forge — compile, test, and deploy shielded smart contracts locally.
+  - name: sanvil
+    description: Seismic fork of anvil — a local Seismic (Sanvil) development node for testing.
+  - name: ssolc
+    description: Seismic Solidity compiler — compiles contracts using shielded types (suint, etc.).
+key_flows:
+  - Write and test contract code locally with sforge before deployment.
+  - Run a local Seismic node (sanvil) for development and integration testing.
+  - Deploy an SRC20 token to the Seismic testnet (see sandbox/seismic-systems-sandbox.yml).

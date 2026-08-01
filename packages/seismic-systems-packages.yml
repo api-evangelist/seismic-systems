@@ -1,0 +1,54 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.seismic.systems/clients/clients.md
+description: >-
+  First-party Seismic client libraries for building on the Seismic encrypted
+  blockchain (shielded transactions, encrypted calldata, signed reads). Verified
+  against the public package registries at fetch time: seismic-viem and
+  seismic-react resolve on the npm registry (2.0.1); seismic-web3 resolves on
+  PyPI (0.2.2). seismic-alloy is the Rust SDK, distributed from the SeismicSystems
+  GitHub org and consumed via Cargo. @seismic/src20-sdk is an internal workspace
+  package and is intentionally NOT published to npm, so it is excluded here.
+packages:
+  - language: javascript
+    registry: npm
+    name: seismic-viem
+    url: https://www.npmjs.com/package/seismic-viem
+    source: https://github.com/SeismicSystems/seismic-client
+    install: npm install seismic-viem viem
+    version: 2.0.1
+    official: true
+    note: TypeScript client composing with viem 2.x for shielded transactions, encrypted calldata, and signed reads.
+  - language: javascript
+    registry: npm
+    name: seismic-react
+    url: https://www.npmjs.com/package/seismic-react
+    source: https://github.com/SeismicSystems/seismic-client
+    install: npm install seismic-react
+    version: 2.0.1
+    official: true
+    note: React hooks and providers composing with wagmi for shielded wallet management and encrypted transactions.
+  - language: python
+    registry: pypi
+    name: seismic-web3
+    url: https://pypi.org/project/seismic-web3/
+    source: https://github.com/SeismicSystems
+    install: pip install seismic-web3
+    version: 0.2.2
+    official: true
+    note: Python SDK built on web3.py — sync/async Seismic clients, shielded namespaces, precompiles, EIP-712 helpers.
+  - language: rust
+    registry: github
+    name: seismic-alloy
+    url: https://github.com/SeismicSystems/seismic-alloy
+    source: https://github.com/SeismicSystems/seismic-alloy
+    install: cargo add seismic-alloy (git dependency from the SeismicSystems org)
+    official: true
+    note: Rust SDK built on Alloy — signed/unsigned providers, TEE key exchange, shielded calls. Distributed via GitHub/Cargo.
+tooling:
+  - name: seismic-foundry (sfoundry)
+    language: rust
+    url: https://github.com/SeismicSystems/seismic-foundry
+    install: 'sfoundryup (see cli/seismic-systems-cli.yml)'
+    official: true
+    note: Fork of Foundry providing sforge (test framework), sanvil (local node), ssolc (compiler).

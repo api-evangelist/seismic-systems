@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.seismic.systems/networks/testnet.md
+description: >-
+  Seismic's public test surface. Developers build against the Seismic Testnet
+  (a hosted public testnet) or a local Sanvil node, funding accounts from the
+  public faucet — no real value moves. Network parameters, faucet, and explorer
+  are transcribed verbatim from the Seismic networks docs. No secret test keys
+  or magic card numbers apply (this is an on-chain platform, not a card acquirer);
+  test accounts are ordinary EVM keypairs funded by the faucet.
+docs:
+  - https://docs.seismic.systems/networks/testnet.md
+  - https://docs.seismic.systems/clients/typescript/react/chains/sanvil.md
+networks:
+  - name: Seismic Testnet
+    type: hosted-testnet
+    chain_id: 5124
+    rpc_https: https://testnet-1.seismictest.net/rpc
+    rpc_wss: wss://testnet-1.seismictest.net/ws
+    explorer: https://seismic-testnet.socialscan.io/
+    faucet: https://faucet.seismictest.net/
+  - name: Sanvil
+    type: local-devnet
+    description: >-
+      Local Seismic Anvil node (fork of anvil) for offline development and
+      testing. Installed via the sfoundry toolchain (see cli/seismic-systems-cli.yml).
+faucet:
+  url: https://faucet.seismictest.net/
+  repo: https://github.com/SeismicSystems/faucet
+  note: Dispenses testnet funds to a developer address for exercising deploys and shielded transactions.

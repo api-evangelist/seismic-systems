@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from the Seismic docs (reference/rpc-methods.md, differences-from-ethereum.md,
+  reference/migrating-from-ethereum.md) and openapi/seismic-systems-src20-factory-openapi.yml.
+description: >-
+  Cross-cutting standards Seismic conforms to. Seismic is an EVM-compatible
+  encrypted L1 ("Mercury" shielded EVM) that exposes a subset of the Ethereum
+  JSON-RPC interface, adds a Seismic transaction type (0x4A) and shielded
+  precompiles, and extends Solidity/ERC-20 with shielded types (SRC20). The
+  REST surface uses a plain JSON envelope, not RFC 9457.
+standards:
+  - id: ethereum-json-rpc
+    conforms: true
+    evidence: Exposes eth_call, eth_sendRawTransaction, eth_getStorageAt plus seismic_getTeePublicKey (reference/rpc-methods.md).
+  - id: evm-compatibility
+    conforms: true
+    evidence: Mercury shielded EVM; Ethereum contracts/dApps migratable (reference/migrating-from-ethereum.md).
+  - id: erc20
+    conforms: partial
+    evidence: SRC20 is a shielded ERC-20 variant (balances/transfers hidden); interface familiar but semantics differ.
+  - id: eip712
+    conforms: true
+    evidence: Seismic transactions and signing use EIP-712 typed data (reference/seismic-transaction/cryptography.md).
+  - id: oauth2
+    conforms: false
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: REST API returns a simple { error } envelope, not application/problem+json.

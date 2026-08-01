@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.seismic.systems/networks/testnet.md
+description: >-
+  Seismic's platform lifecycle. As of mid-2026 the network is in public TESTNET
+  stage (chain id 5124); no mainnet, versioned REST API, or documented deprecation
+  policy was found. Legal terms (Terms of Service, Privacy Policy) are published
+  and dated. No public status page was found (status.seismic.systems did not
+  resolve at probe time).
+stage: public-testnet
+networks:
+  - {name: Seismic Testnet, chain_id: 5124, docs: https://docs.seismic.systems/networks/testnet.md}
+legal:
+  terms_of_service:
+    url: https://docs.seismic.systems/reference/terms-of-service.md
+    effective_date: '2026-03-30'
+  privacy_policy:
+    url: https://docs.seismic.systems/reference/privacy-policy.md
+    updated: '2026-07-01'
+versioning:
+  rest_api: unversioned (SRC20 Factory REST API)
+  sdks:
+    seismic-viem: 2.0.1
+    seismic-react: 2.0.1
+    seismic-web3: 0.2.2
+deprecation:
+  policy_documented: false
+status_page:
+  found: false
+  note: status.seismic.systems did not resolve at probe time (2026-07-21).
+deprecated_operations: []

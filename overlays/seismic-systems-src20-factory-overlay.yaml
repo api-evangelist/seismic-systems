@@ -1,0 +1,32 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Seismic SRC20 Factory REST API
+  version: 1.0.0
+extends: openapi/seismic-systems-src20-factory-openapi.yml
+x-provenance:
+  generated: '2026-07-21'
+  method: generated
+  source: openapi/seismic-systems-src20-factory-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: true
+      x-apievangelist-notes: >-
+        Read-only public query surface over SRC20 Factory deployments. Shielded
+        state requires a wallet SDK (seismic-viem/seismic-web3/seismic-alloy).
+  - target: $.info
+    update:
+      x-authentication: authentication/seismic-systems-authentication.yml
+      x-conventions: conventions/seismic-systems-conventions.yml
+      x-errors: errors/seismic-systems-problem-types.yml
+      x-data-model: data-model/seismic-systems-data-model.yml
+  - target: $.paths['/api/tokens'].get
+    update:
+      x-agentic-access:
+        action-class: connected
+        consequence: read
+  - target: $.paths['/api/token/{address}'].get
+    update:
+      x-agentic-access:
+        action-class: connected
+        consequence: read

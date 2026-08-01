@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from openapi/seismic-systems-src20-factory-openapi.yml and the Seismic
+  docs (getting-started/src20-factory/api.md, reference/seismic-transaction.md).
+description: >-
+  Cross-cutting request/response semantics for Seismic's developer surface. The
+  SRC20 Factory REST API is a minimal read-only JSON service; the substantive
+  conventions live at the on-chain layer (shielded transactions, signed reads,
+  TEE-encrypted calldata). No idempotency-key, pagination, or rate-limit headers
+  are documented for the REST API.
+rest_api:
+  base_url: http://localhost:3001
+  style: REST over HTTP, JSON responses
+  authentication: none  # see authentication/seismic-systems-authentication.yml
+  idempotency:
+    supported: false
+    note: All documented REST operations are GET (inherently idempotent); no write endpoints, no Idempotency-Key header.
+  pagination:
+    supported: false
+    note: GET /api/tokens returns the full list with a `count` field; no cursor/offset params documented.
+  error_envelope:
+    field: error
+    detail: errors/seismic-systems-problem-types.yml
+  address_format: lowercase hex, NOT EIP-55 checksummed
+  rate_limits:
+    documented: false
+onchain:
+  transaction_type: Seismic tx type 0x4A (EIP-712 typed data)
+  encryption: calldata AES-256-GCM encrypted to node TEE public key via ECDH
+  signed_reads: authenticated eth_call proving caller identity
+  rpc_methods: [seismic_getTeePublicKey, eth_call, eth_sendRawTransaction, eth_getStorageAt]
+  detail: authentication/seismic-systems-authentication.yml

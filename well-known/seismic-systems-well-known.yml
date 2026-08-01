@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: probed
+description: >-
+  Probe of the /.well-known/ discovery surface for Seismic hosts. No documents
+  were returned (200) at probe time (2026-07-21). The marketing host redirects
+  all /.well-known/ paths (308) and the docs/testnet hosts return 404/502.
+  Absence is valid, expected data — no raw files were saved.
+hosts:
+  - host: https://seismic.systems
+    documents:
+      - {path: /.well-known/security.txt, status: 308}
+      - {path: /.well-known/openid-configuration, status: 308}
+      - {path: /.well-known/oauth-authorization-server, status: 308}
+      - {path: /.well-known/api-catalog, status: 308}
+      - {path: /.well-known/ai-plugin.json, status: 308}
+  - host: https://docs.seismic.systems
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+  - host: https://testnet-1.seismictest.net
+    documents:
+      - {path: /.well-known/security.txt, status: 502}

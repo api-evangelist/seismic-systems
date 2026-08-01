@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/seismic-systems-src20-factory-openapi.yml
+description: >-
+  Entity-relationship view derived from the SRC20 Factory REST API schema. The
+  read surface exposes a single public entity, Token, keyed by contract address
+  and owned by an on-chain account. Shielded state (balances, allowances) is not
+  exposed via REST and so is not modeled here.
+entities:
+  - name: Token
+    description: Public metadata for an SRC20 token deployed through the factory.
+    id_field: address
+    id_format: lowercase hex contract address (not EIP-55 checksummed)
+    fields: [address, name, symbol, decimals, owner, total_supply]
+    source_schema: openapi/seismic-systems-src20-factory-openapi.yml#/components/schemas/Token
+relationships:
+  - from: Token
+    to: Account
+    type: belongs_to
+    via: owner
+    note: The `owner` field references an on-chain account address; Account is not itself a REST resource.
