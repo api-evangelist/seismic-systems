@@ -2,18 +2,22 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: openapi/seismic-systems-src20-factory-openapi.yml
-description: >-
-  No official hosted/remote MCP server was found for Seismic (the docs publish
-  Claude Code workflow skills and CLAUDE.md templates instead — see
-  skills/_index.yml). This is a CANDIDATE tool list derived from the SRC20
-  Factory REST API operations; it is not a published server.
+description: No official hosted/remote MCP server was found for Seismic (the docs publish Claude Code
+  workflow skills and CLAUDE.md templates instead — see skills/_index.yml). This is a CANDIDATE tool list
+  derived from the SRC20 Factory REST API operations; it is not a published server.
 server:
   name: seismic-systems
   transport: http
 tools:
-  - name: list_src20_tokens
-    description: List SRC20 tokens deployed through the factory with public metadata.
-    source_operation: openapi/seismic-systems-src20-factory-openapi.yml#listTokens
-  - name: get_src20_token
-    description: Get public metadata for a single SRC20 token by address.
-    source_operation: openapi/seismic-systems-src20-factory-openapi.yml#getToken
+- name: list_src20_tokens
+  description: List SRC20 tokens deployed through the factory with public metadata.
+  source_operation: openapi/seismic-systems-src20-factory-openapi.yml#listTokens
+- name: get_src20_token
+  description: Get public metadata for a single SRC20 token by address.
+  source_operation: openapi/seismic-systems-src20-factory-openapi.yml#getToken
+deployment:
+  mode: none
+  verified: derived
+  tools: 2
+  checked: '2026-08-12'
+  source: catalog MCP census

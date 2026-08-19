@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seismic SRC20 Factory REST tokens API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List deployed SRC20 tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:3001/api/tokens"
+          },
+          "docs": "Returns all tokens deployed through the SRC20 Factory with their public metadata."
+        },
+        {
+          "info": {
+            "name": "Get a single token by address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:3001/api/token/:address",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "The SRC20 token contract address (hex)."
+              }
+            ]
+          },
+          "docs": "Retrieves public metadata for a single SRC20 token by its contract address."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
