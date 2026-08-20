@@ -54,6 +54,8 @@ apis:
   humanURL: https://docs.seismic.systems/
   baseURL: https://testnet-1.seismictest.net/rpc
   tags:
+  - Tokens
+  tags_raw:
   - tokens
   properties:
   - type: OpenAPI
