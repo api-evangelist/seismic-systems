@@ -61,7 +61,7 @@ tags:
 - Developer Tools
 apis:
 - aid: seismic-systems:seismic-systems-tokens-api
-  name: Seismic Systems tokens API
+  name: Seismic Systems Tokens API
   description: The tokens API from Seismic Systems — 2 operation(s) for tokens.
   humanURL: https://docs.seismic.systems/
   baseURL: https://testnet-1.seismictest.net/rpc
