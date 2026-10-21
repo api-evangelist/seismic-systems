@@ -47,3 +47,33 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: seismic-systems-andreessen-horowitz-a16z
+  label: Andreessen Horowitz (a16z)
+  partner: a16z
+  partner_name: Andreessen Horowitz (a16z)
+  category: vc portfolio participation
+  type: register
+  channel: standard-directory
+  evidence: https://a16z.com/companies/seismic-systems/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: a16z portfolio (a16z.com/portfolio/, the page's own data-companies JSON)
+    standard: null
+    spec_file: null
+    role: vc-portfolio-company
+    registered_name: Seismic Systems
+    register_id: https://a16z.com/companies/seismic-systems/
+    register_country: null
+    register_website: https://seismic.systems
+    matched_domain: seismic.systems
+    matched_by: domain
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+    year: '2025'
+    status: Active
+    sector: Crypto
+  status: not-a-workflow
+  arazzo: null
